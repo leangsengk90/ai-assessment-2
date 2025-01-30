@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="42070d0a-efa5-4809-9dbf-a1fc165adca2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/FoodBeverageAI.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/demo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/beveragemenu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/beveragemenudelivery.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/japanesemenu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/japanesemenudelivery.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/koreanmenu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/koreanmenudelivery.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/malaymenu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/malaymenudelivery.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/mamakmenu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menu_folder/mamakmenudelivery.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/chatbot_model.h5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/intents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/labels.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/menu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/words.pkl" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2sM6WJYDWCa3iyXBX387za0LkL6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\PycharmProjects\FoodBeverageAI" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42070d0a-efa5-4809-9dbf-a1fc165adca2" name="Changes" comment="" />
+      <created>1738253127232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738253127232</updated>
+    </task>
+    <servers />
+  </component>
+</project>
