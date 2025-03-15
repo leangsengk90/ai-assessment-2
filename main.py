@@ -29,7 +29,7 @@ isOrder = False
 total_price = 0.00
 
 def clean_up_sentence(sentence):
-    sentence_words = nltk.word_tokenize(sentence)
+    sentence_words = nltk.word_tokenize(sentence.lower())
     sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
     return sentence_words
 
@@ -121,34 +121,34 @@ def add_order(menu_json, order_id, cart):
 
 # API_KEY = os.getenv('API_KEY')
 # FoodBeverageAI_BOT
-bot = telebot.TeleBot('8015337720:AAFCosFxYKv6Bao2zyVhJLY8McPuPWCkvT0')
+bot = telebot.TeleBot('7762909631:AAEC-mFITlQK4c1bhSiUil0FEtxsl5UJatM')
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, "Hi! How can I help you? Would recommend you to start viewing the menu first.")
 
-# @bot.message_handler(commands=['order'])
-# def start(message):
-#     bot.send_message(message.chat.id, "Hi! How can I help you? Would recommend you to start viewing the menu first.")
-#
-#
-#
-#     while temp:
-#         bot.send_message(message.chat.id, 'Type the food id of the food that u want:')
-#         food_id = input()
-#         price = order_food(menu, food_id)
-#         total_price += price  # Total price calculation here
-#
-#         print('Would you like to order anymore food? (1 = no)')
-#         flag = input()
-#
-#         if flag == '1':
-#             temp = False
-#
-#     print('Thanks for your order!')
-#     print('The total price is ')
-#     print(total_price)
+@bot.message_handler(commands=['order'])
+def start(message):
+    bot.send_message(message.chat.id, "Hi! How can I help you? Would recommend you to start viewing the menu first.")
+
+
+
+    while temp:
+        bot.send_message(message.chat.id, 'Type the food id of the food that u want:')
+        food_id = input()
+        price = order_food(menu, food_id)
+        total_price += price  # Total price calculation here
+
+        print('Would you like to order anymore food? (1 = no)')
+        flag = input()
+
+        if flag == '1':
+            temp = False
+
+    print('Thanks for your order!')
+    print('The total price is ')
+    print(total_price)
 
 
 # shopping_cart_price = 0.00
@@ -249,25 +249,18 @@ def ordering_process(message):
 
 
 
+        # print Khmer menu
+        if res == "Ok. I will fetch a Khmer menu for u":
+            if delivery_service:
+                khmer_delivery_menu = open('menu_folder/khmermenudelivery.pdf', 'rb')
+                bot.send_document(msg.chat.id, khmer_delivery_menu)
+            else:
+                khmer_menu = open('menu_folder/khmermenu.pdf', 'rb')  # Assuming you have a non-delivery menu PDF
+                bot.send_document(msg.chat.id, khmer_menu)
 
-    # if res == "Ok. What food would you like to order?":
-    #     total_price = 0.00
-    #     temp = True
-    #     while temp:
-    #         print('Type the food id of the food that u want:')
-    #         food_id = input()
-    #         price = order_food(menu, food_id)
-    #         total_price += price  # Total price calculation here
-    #
-    #         print('Would you like to order anymore food? (1 = no)')
-    #         flag = input()
-    #
-    #         if flag == '1':
-    #             temp = False
-    #
-    #     print('Thanks for your order!')
-    #     print('The total price is ')
-    #     print(total_price)
+            isOrder = False
+
+
 
         if res == "See you and come back if you want to chat with me again." or res == "Talk to you later" or res == "Goodbye!":
             total_price = 0

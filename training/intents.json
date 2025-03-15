@@ -1,90 +1,585 @@
-{"intents": [
-        {"tag": "greeting",
-         "patterns": ["Hi", "Is anyone there?", "Hello", "Good day", "Whats up", "wassup","yo", "suuuup", "sup", "hey"],
-         "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help you?"]
-        },
-       {"tag": "good",
-         "patterns": ["How are you", "How r u","how are you today", "how r u today"],
-         "responses": ["Hi! I am good, how about you?", "I am fine , how about you?", "Hi! I am here and good"]
-        },
-        {"tag": "conv",
-         "patterns": ["I am fine", "I am good"],
-         "responses": ["How can I help you?", "What can I do for you?", "How can I help you?"]
-        },
-        {"tag": "goodbye",
-         "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","Bye", "Thank you", "Bye bye", "Byeeeeee"],
-         "responses": ["See you and come back if you want to chat with me again.", "Talk to you later", "Goodbye!"]
-        },
-        {"tag": "age",
-         "patterns": ["how old", "how old r u", "how old is bot", "what is your age", "how old are you", "age?", "are you pretty old", "can I know your age ", "when you born"],
-         "responses": ["I am bot and developed in 2021 by an awesome team DIDISUBMIT!", "I recently developed in 2021 by the team DIDISUBMIT!"]
-        },
-        {"tag": "name",
-         "patterns": ["what is your name", "what should I call you", "whats your name?"],
-         "responses": ["My name is Kayo the bot","You can call me Kayo the bot.", "I'm Kayo!", "I'm bot and you can call with Kayo"]
-        },
-        {"tag": "intro",
-         "patterns": ["tell me about yourself", "what are you hobbies", "who are you", "Who is this chat bot", "What do u do", "What do you normally do", "What can u do"],
-         "responses": ["I am a simple chat bot and do food ordering services for customers", "I order food for customers, provide me with the order number and I will order the food for you."]
-        },
-        {"tag": "skills",
-         "patterns": ["what language do you know", "what are your skills", "how can you help us", "what programming language do you know", "What r u good at"],
-         "responses": ["You can order food chat with me when you get bored, I run in AI", "I am a bot developed on AI that helps customer to order food.", "AI chat bot and help you order food"]
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hi there!",
+        "Hello!",
+        "Hey, what's up?",
+        "Good day!",
+        "How's it going?",
+        "Yo!",
+        "What's good?",
+        "Hey, how are you?",
+        "Sup?",
+        "Suuuup?",
+        "What's up, buddy?",
+        "Howdy!",
+        "Greetings!",
+        "Hello there!",
+        "What's happening?",
+        "Hey, what's new?",
+        "How are things?",
+        "Yo, how's everything?",
+        "Good morning!",
+        "Good evening!",
+        "Hey, long time no see!",
+        "What's going on?",
+        "Hey there, how's life?",
+        "What's cracking?",
+        "How's everything going?",
+        "Hey, how's it going?",
+        "What's up with you?",
+        "Yo, what's the word?",
+        "What's happening with you?",
+        "How's your day going?",
+        "Hey! What's new in your world?",
+        "Hi, how's everything been?",
+        "What's poppin'?",
+        "What's up today?",
+        "How's your day been so far?"
+      ],
+      "responses": [
+        "Hello! How can I assist you today?",
+        "Hey there! What can I do for you?",
+        "Good to see you! How can I help?",
+        "Hi! How's everything going?",
+        "Hey, what's on your mind?",
+        "Hello! How can I be of service?",
+        "Hey, how can I help you today?",
+        "What's up? How can I assist?",
+        "Good to see you! What's up?",
+        "Hi! What brings you here today?",
+        "Hey! How can I make your day better?",
+        "Greetings! How can I support you today?",
+        "Hello there! What's on your mind?",
+        "Howdy! How can I be of assistance?",
+        "Good morning! What can I help you with today?",
+        "Hello! How's your day going so far?",
+        "Hey, how's it going? Need help with anything?",
+        "What's up? How can I make your day easier?",
+        "Hello! I'm here if you need anything.",
+        "Hey there! How can I make things better for you?",
+        "What's good? How can I assist today?",
+        "Hi! I'm ready to help with whatever you need.",
+        "Good to see you! What can I help you with today?",
+        "Hey! Need assistance with something?",
+        "Hello! I'm available if you need help!",
+        "Hey, how's life? How can I assist?",
+        "What's going on? Let me know how I can help.",
+        "Hi! Can I assist you with anything today?",
+        "Hello! How's everything on your end?",
+        "Hey, how's your day going so far?",
+        "Greetings! How can I make things easier for you?"
+      ]
+    },    
+    {
+      "tag": "good",
+      "patterns": [
+        "How are you?",
+        "How are you doing?",
+        "How's it going?",
+        "How are you today?",
+        "How's everything?",
+        "How's life?",
+        "How are things?",
+        "How's your day going?",
+        "How are you feeling?",
+        "How's everything going?",
+        "What's up? How are you?",
+        "How's your mood today?",
+        "How's everything with you?",
+        "How's everything been?",
+        "How's it going today?",
+        "What's going on? How are you?",
+        "How's life treating you?",
+        "How are you holding up?",
+        "How have you been?",
+        "How are things going for you?"
+      ],
+      "responses": [
+        "I'm doing great, thanks for asking! How about you?",
+        "I'm doing well, how are you doing?",
+        "I'm good, thanks for asking! How's everything on your end?",
+        "I'm great, how about you?",
+        "Feeling good, how about yourself?",
+        "I'm doing fantastic, and you?",
+        "I'm great, thanks for asking! How are things with you?",
+        "I'm doing awesome, what about you?",
+        "I'm doing well! How's everything with you?",
+        "I'm feeling good, and you?",
+        "I'm doing great, how's your day going?",
+        "All is well on my side, how about you?",
+        "I'm feeling fantastic, how are you doing?",
+        "I'm doing amazing, how about you?",
+        "I'm in a great mood, what about you?",
+        "I'm doing great today, how about yourself?",
+        "Everything's going well, thanks! How about you?",
+        "I'm doing awesome today, how are you doing?",
+        "Everything's great, thanks for asking! How are you?",
+        "I'm good, how's everything on your side?"
+      ]
+    },    
+    {
+      "tag": "conv",
+      "patterns": [
+        "I am fine",
+        "I am good",
+        "I'm doing well",
+        "I'm feeling great",
+        "I'm doing okay",
+        "I'm doing alright",
+        "Everything's going well",
+        "I'm doing just fine",
+        "I'm good, thanks",
+        "I'm doing great, thanks",
+        "I'm feeling awesome",
+        "I feel great",
+        "I'm doing fantastic",
+        "I'm doing superb",
+        "I'm feeling wonderful",
+        "I'm doing excellent",
+        "I'm feeling amazing",
+        "I'm feeling really good",
+        "All is good",
+        "I'm in a good mood"
+      ],
+      "responses": [
+        "I'm glad to hear that! How can I assist you today?",
+        "That's great! Is there anything you'd like help with?",
+        "I'm happy you're doing well. How can I be of service?",
+        "Wonderful to hear! What can I do for you today?",
+        "Glad to hear you're doing well. How can I assist you further?",
+        "That's great to hear! Let me know how I can help you.",
+        "I'm so happy to hear that! How can I support you today?",
+        "Awesome! How can I help you today?",
+        "It's great to hear that! What do you need assistance with?",
+        "I'm glad everything is going well. What can I do for you?",
+        "Great to hear! How can I make your day better?",
+        "I'm happy to hear that! What would you like to talk about?",
+        "So glad to hear you're doing well. How can I assist?",
+        "Fantastic! What can I help you with today?",
+        "I'm so pleased to hear that. How can I be of help?",
+        "Wonderful! How can I help you today?",
+        "It's awesome to hear you're feeling great. How can I assist you?",
+        "I'm really glad to hear that! How can I help you today?",
+        "I'm happy to hear you're doing well. What can I do for you?"
+      ]
+    },    
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "cya",
+        "See you later",
+        "Goodbye",
+        "I'm leaving",
+        "Have a great day",
+        "Bye",
+        "Thank you",
+        "Bye bye",
+        "Byeeeeee",
+        "Take care",
+        "Catch you later",
+        "See you soon",
+        "I'm off",
+        "I'm heading out",
+        "Talk to you later",
+        "Until next time",
+        "Peace out",
+        "I'm out",
+        "Have a nice day",
+        "Later",
+        "Goodbye for now",
+        "Thanks for your time",
+        "Catch you on the flip side",
+        "Adios",
+        "See you around",
+        "I'm signing off",
+        "Until we meet again",
+        "Have a good one",
+        "I'm off now"
+      ],
+      "responses": [
+        "Take care and feel free to return anytime for a chat!",
+        "See you later! Don't hesitate to reach out if you need anything.",
+        "Goodbye for now! Wishing you all the best until next time.",
+        "Thanks for stopping by! Hope we chat again soon.",
+        "Take care! I'll be here if you need me.",
+        "It was great talking to you! Come back anytime.",
+        "Goodbye! Have a wonderful day ahead!",
+        "See you soon! Don't hesitate to reach out.",
+        "Take care and stay safe! Hope to hear from you again.",
+        "Have a great day ahead! Until next time.",
+        "Wishing you all the best! See you next time.",
+        "Catch you later! I'll be around if you need help.",
+        "Take care and hope we chat again soon!",
+        "Thanks for the chat! Goodbye for now.",
+        "Goodbye! Enjoy the rest of your day!",
+        "Have a good one! Catch you later!",
+        "See you around! Stay awesome!",
+        "Take care and don't be a stranger!",
+        "Thanks for your time! Have a great day ahead.",
+        "I'll be here if you need me. Take care!"
+      ]
+    },    
+    {
+      "tag": "age",
+      "patterns": [
+        "how old",
+        "how old r u",
+        "how old is bot",
+        "what is your age",
+        "how old are you",
+        "age?",
+        "are you pretty old",
+        "can I know your age",
+        "when you born",
+        "what's your age",
+        "how many years old are you",
+        "how long have you been around",
+        "how old is this bot",
+        "when were you created",
+        "what year were you made",
+        "how old is your system",
+        "how old is your software",
+        "how long have you existed",
+        "are you an old bot"
+      ],
+      "responses": [
+        "I am a bot, developed in 2025 by an AI team!",
+        "I was recently developed in 2025 by a talented team of engineers!",
+        "I'm just a young bot, created in 2025 by some brilliant minds!",
+        "I was born in 2025, so I'm quite new!",
+        "I don't have an age like humans do, but I was created in 2025!",
+        "I was built in 2025, so I'm only a few years old!",
+        "I'm a bot developed in 2025, so I'm pretty fresh!",
+        "I don't age, but I was developed in 2025 by an AI team!",
+        "I'm new to the world, created in 2025!",
+        "I was launched in 2025, so I'm a recent creation!"
+      ]
+    },    
+    {
+      "tag": "name",
+      "patterns": [
+        "what is your name",
+        "what should I call you",
+        "whats your name?",
+        "who are you?",
+        "can I know your name?",
+        "how do I address you?",
+        "what's your name?",
+        "what do you go by?",
+        "who am I talking to?",
+        "can I call you something?",
+        "what do I call you?",
+        "what should I refer to you as?",
+        "how should I call you?",
+        "name?"
+      ],
+      "responses": [
+        "My name is Food Chatbot the bot.",
+        "You can call me Food Chatbot the bot.",
+        "I'm Food Chatbot!",
+        "I'm bot, and you can call me Food Chatbot.",
+        "I go by the name Food Chatbot the bot.",
+        "I'm called Food Chatbot the bot.",
+        "Call me Food Chatbot the bot!",
+        "You can address me as Food Chatbot.",
+        "My name's Food Chatbot, nice to meet you!",
+        "I'm Food Chatbot, nice to chat with you!"
+      ]
+    },    
+    {
+      "tag": "intro",
+      "patterns": [
+        "tell me about yourself",
+        "what are you hobbies",
+        "who are you",
+        "Who is this chat bot",
+        "What do u do",
+        "What do you normally do",
+        "What can u do",
+        "what are you all about",
+        "what's your purpose",
+        "what are you for",
+        "what's your job",
+        "can you tell me about yourself",
+        "what is your role",
+        "what can you help with",
+        "how do you help",
+        "what's your function",
+        "what is your specialty",
+        "how can you assist me"
+      ],
+      "responses": [
+        "I am a simple chat bot and I provide food ordering services for customers.",
+        "I order food for customers, just provide me with the order number and I'll take care of the rest!",
+        "I'm a bot designed to help with food orders. Tell me the order number, and I'll place the order for you.",
+        "I help customers by taking their food orders and ensuring they're delivered.",
+        "I specialize in food ordering! Just tell me what you want, and I'll handle the rest.",
+        "I'm a chat bot designed to help with placing food orders quickly and easily.",
+        "I assist with ordering food! Give me the order number and I'll make sure your food is on the way.",
+        "I'm here to help with food orders! Provide me with the necessary details, and I'll handle it for you.",
+        "I'm a bot created to make food ordering easier for you!",
+        "I'm here to help you order food! Let me know your order, and I'll take care of the rest."
+      ]
+    },    
+    {
+      "tag": "skills",
+      "patterns": [
+        "what language do you know",
+        "what are your skills",
+        "how can you help us",
+        "what programming language do you know",
+        "What r u good at",
+        "what can you do",
+        "what are you capable of",
+        "what's your specialty",
+        "what's your skillset",
+        "what are you trained in",
+        "what kind of tasks can you handle",
+        "what do you excel at",
+        "how can you assist",
+        "what do you specialize in"
+      ],
+      "responses": [
+        "You can order food and chat with me when you get bored, I run on AI!",
+        "I am a bot developed with AI that helps customers order food.",
+        "I'm an AI chat bot that assists with food ordering. Just tell me your order, and I'll do the rest.",
+        "I can help you place food orders, all powered by AI technology!",
+        "I specialize in assisting with food orders. When you're ready, just let me know the order details.",
+        "I help you order food easily and quickly, using AI to process your requests.",
+        "I'm skilled in handling food orders! Let me know what you'd like, and I'll place it for you.",
+        "I am built with AI, and I excel at making food orders for customers.",
+        "My skills are in food ordering. Just provide the order details, and I'll take care of it!",
+        "I'm designed to help you place food orders, powered by AI. Let's get your order in!"
+      ]
+    },    
+    {
+      "tag": "hours",
+      "patterns": [
+        "what time open",
+        "opening time",
+        "can you work 24 hours",
+        "How long do u operate",
+        "What's ur operating hours",
+        "Are you open all day?",
+        "What are your business hours?",
+        "When do you open and close?",
+        "Do you operate 24/7?",
+        "What time do you start working?",
+        "What time do you close?",
+        "How long are you open each day?",
+        "What are your hours of operation?",
+        "Are you available all the time?",
+        "When is your service available?",
+        "How long do you work every day?"
+      ],
+      "responses": [
+        "I work 24/7, ready to serve for you and developed on AI.",
+        "I am available around the clock, anytime you need me.",
+        "Our service operates 24/7, so feel free to reach out at any time.",
+        "I'm always open and ready to assist you, 24 hours a day.",
+        "You can reach me anytime, as I am available all day, every day.",
+        "Our working hours are 24/7, we don't stop working.",
+        "We never close. I'm here whenever you need help!",
+        "No need to worry about time I'm available 24 hours a day.",
+        "We operate all day, every day, to ensure you get the help you need.",
+        "I work non-stop, 24 hours a day, seven days a week."
+      ]
+    },    
 
-        },
-          {"tag": "hours",
-         "patterns": ["what time open", "opening time", "can you work 24 hours", "How long do u operate", "What's ur operating hours"],
-         "responses": ["I work 24/7, ready to serve for you and developed on AI"]
+    {
+      "tag": "delivery",
+      "patterns": [
+        "I'd like to order for delivery",
+        "I want food delivery",
+        "Can I get food delivery?",
+        "I am lazy to get food outside",
+        "Do you offer delivery?",
+        "Can you deliver food to my address?",
+        "Is food delivery available?",
+        "How can I place an order for delivery?",
+        "I want to order food to be delivered",
+        "Can I get my food delivered?",
+        "Do you deliver to my area?",
+        "I need food delivered to my home",
+        "Is delivery available for all items?",
+        "Can I order delivery from the menu?"
+      ],
+      "responses": [
+        "Sure, we have a menu for delivery only.",
+        "Yes, we offer delivery! Just let me know what you'd like.",
+        "We can deliver your food right to your door, what would you like to order?",
+        "Delivery service is available! Pick your favorite items and I'll get them to you.",
+        "Food delivery is available for your convenience, feel free to order.",
+        "We deliver! Please share your address, and we will handle the rest.",
+        "Yes, we can bring your meal directly to you. What are you craving today?",
+        "Order delivery from our special menu and enjoy your meal at home!",
+        "Our delivery service ensures you get your food without leaving the comfort of your home.",
+        "Yes, we do provide delivery! Just let us know your location and what you'd like to eat.",
+        "We'll deliver right to your doorstep. What would you like to order today?"
+      ]
+    },    
 
-        },
+    {
+      "tag": "menu",
+      "patterns": [
+        "Menu",
+        "Menu please",
+        "Can I have a look at the menu?",
+        "What's on the menu?",
+        "What kind of stalls do you have?",
+        "What stalls do you offer?",
+        "What type of food stalls do you have?",
+        "Tell me the menu",
+        "What's available?",
+        "Show me the menu",
+        "What food options are there?",
+        "What are your food stalls?",
+        "What can I choose from?"
+      ],
+      "responses": [
+        "Sure! We have 6 exciting stalls: Malay, Mamak, Korean, Japanese, Beverage, and Khmer. Which one are you curious about? Feel free to ask for more details on any stall!",
+        "Our menu includes 6 unique stalls: Malay, Mamak, Korean, Japanese, Beverage, and Khmer. Let me know which stall you'd like to explore more!",
+        "We offer a variety of 6 stalls: Malay, Mamak, Korean, Japanese, Beverage, and Khmer. Which one would you like to learn more about?"
+      ]
+    },    
+    {
+      "tag": "japanese",
+      "patterns": [
+        "japanese",
+        "I want to eat some sushi",
+        "I want seaweed",
+        " I want to try japanese food",
+        "I am craving japanese",
+        "I want some salmon roll",
+        "I want to eat ramen",
+        "i want to eat sushi now"
+      ],
+      "responses": ["Ok. I will fetch a Japanese menu for u"]
+    },
+    {
+      "tag": "mamak",
+      "patterns": [
+        "mamak",
+        "I want to eat roti canai",
+        "I want to eat indian",
+        "I want to eat Southern Asia food",
+        "i want to eat roti tissue",
+        "I wan to eat maggie goreng"
+      ],
+      "responses": ["Ok. I will fetch a Mamak menu for u"]
+    },
+    {
+      "tag": "beverage",
+      "patterns": [
+        "beverage",
+        "I want drink something",
+        "I want a drink",
+        "I am thirsty",
+        "I want something to drink",
+        "I want water",
+        "I want a beverage"
+      ],
+      "responses": ["Ok. I will fetch a beverage menu for u"]
+    },
+    {
+      "tag": "ok",
+      "patterns": [
+        "ok",
+        "okay",
+        "alright",
+        "got it",
+        "sure",
+        "fine",
+        "sounds good"
+      ],
+      "responses": ["Thank you for your support!", "Thanks for choosing us!", "We appreciate your business!", "Thank you! Let us know if you need anything else."]
+    },    
+    {
+      "tag": "malay",
+      "patterns": [
+        "malay",
+        "I want to eat malay food",
+        "give me some local malay cuisine",
+        "I want to try malay dishes",
+        "I want malay",
+        "let me get some malay food",
+        "lets try malay food"
+      ],
+      "responses": ["Ok. I will fetch a Malay menu for u"]
+    },
+    {
+      "tag": "order",
+      "patterns": [
+        "I'd like to order ",
+        "I want nasi lemak",
+        "I want this for dinner",
+        "I'd like to have this for lunch'",
+        "how to order",
+        "I wan to order food",
+        "Order food"
+      ],
+      "responses": [
+        "Ok. Please type the food id of the food you would like to order."
+      ]
+    },
 
-        {"tag": "delivery",
-         "patterns": ["I’d like to order for delivery","I want food delivery", "Can I get food delivery?","I am lazy to get food outside"],
-         "responses": ["Sure, we have menu for delivery only"]
+    {
+      "tag": "korean",
+      "patterns": [
+        "korean",
+        "I want to eat korean food",
+        "I am craving korean food",
+        "I want to eat some spicy korean food",
+        "I would like to try korean cuisine",
+        "I want to eat fried chicken"
+      ],
+      "responses": ["Ok. I will fetch a Korean menu for u"]
+    },
+    {
+      "tag": "khmer",
+      "patterns": [
+        "khmer food",
+        "khmer food bro",
+        "Khmer food",
+        "Khmer food bro",
+        "I want to eat Khmer food",
+        "I want to eat Kor Ko",
+        "Give me some Cambodian food",
+        "I want to try Khmer cuisine",
+        "Let me get some Khmer dishes",
+        "What are the traditional Khmer foods?",
+        "I want some amok",
+        "I want to try Cambodian food"
+      ],
+      "responses": ["Ok. I will fetch a Khmer menu for u"]
+    },
 
-        },
-
-
-         {"tag": "menu",
-         "patterns": ["Menu","Menu pls","Can I have a look at the menu", "whats the menu", "What kind of stalls do you have?", "Wht kinda stalls u hav"],
-         "responses": ["We have 5 stalls in total: Malay, Mamak, Korean, Japanese, Beverage. Which stall would you like to know more about?"]
-
-        },
-        {"tag": "japanese",
-         "patterns": ["japanese","I want to eat some sushi", "I want seaweed"," I want to try japanese food","I am craving japanese","I want some salmon roll", "I want to eat ramen","i want to eat sushi now"],
-         "responses": ["Ok. I will fetch a Japanese menu for u"]
-
-        },
-        {"tag": "mamak",
-         "patterns": ["mamak","I want to eat roti canai", "I want to eat indian","I want to eat Southern Asia food","i want to eat roti tissue","I wan to eat maggie goreng"],
-         "responses": ["Ok. I will fetch a Mamak menu for u"]
-
-        },
-         {"tag": "beverage",
-         "patterns": ["beverage","I want drink something", "I want a drink","I am thirsty","I want something to drink","I want water","I want a beverage"],
-         "responses": ["Ok. I will fetch a beverage menu for u"]
-
-        },
-         {"tag": "malay",
-         "patterns": ["malay","I want to eat malay food", "give me some local malay cuisine","I want to try malay dishes","I want malay","let me get some malay food","lets try malay food"],
-         "responses": ["Ok. I will fetch a Malay menu for u"]
-
-        },
-        {"tag": "order",
-         "patterns": ["I'd like to order ", "I want nasi lemak","I want this for dinner","I'd like to have this for lunch'","how to order","I wan to order food", "Order food"],
-         "responses": ["Ok. Please type the food id of the food you would like to order."]
-
-        },
-
-        {"tag": "korean",
-         "patterns": ["korean","I want to eat korean food", "I am craving korean food","I want to eat some spicy korean food","I would like to try korean cuisine","I want to eat fried chicken"],
-         "responses": ["Ok. I will fetch a Korean menu for u"]
-
-        },
-
-        {"tag": "error",
-         "patterns": ["dmwem1431", "dw;afawf'a;'/", "sjdfoawepfoawnfn", "wieofniwoe9392"],
-         "responses": ["Are you okay, why are you typing gibberish?", "I'm sorry but i don't understand"]
-        }
-]
+    {
+      "tag": "error",
+      "patterns": [
+        "dmwem1431",
+        "dw;afawf'a;'/",
+        "sjdfoawepfoawnfn",
+        "wieofniwoe9392",
+        "asdfghjkl",
+        "12345",
+        "qwerty",
+        "!!!",
+        "???",
+        "random characters"
+      ],
+      "responses": [
+        "It seems like something got jumbled up there. Could you please try again?",
+        "Hmm, I'm not quite sure what that means. Could you rephrase?",
+        "Oops! It looks like that's not something I can understand. Mind typing it again?",
+        "I didn't quite catch that. Can you try that once more?"
+      ]
+    }
+    
+  ]
 }
