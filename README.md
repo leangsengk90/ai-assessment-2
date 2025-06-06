@@ -61,6 +61,3 @@ This is a regular use case of using Kayo to order a food.
 
 Feel free to fork this repository, make changes, and submit pull requests. If you find any bugs or have any suggestions, please open an issue.
 
-## License
-
-This project is licensed under the MIT License.

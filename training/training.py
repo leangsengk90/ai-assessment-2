@@ -3,95 +3,147 @@ import random
 import pickle
 import numpy as np
 import nltk
+import matplotlib.pyplot as plt
+
+from nltk.stem import WordNetLemmatizer
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-from nltk.stem import WordNetLemmatizer
 
-# Download necessary NLTK data
-nltk.download('punkt')
-nltk.download('wordnet')
+# ------------------------------
+# NLP and Chatbot Preparation
+# ------------------------------
 
-# Initialize lemmatizer
-lemmatizer = WordNetLemmatizer()
+def prepare_chatbot_data(intents_path='intents.json'):
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    
+    lemmatizer = WordNetLemmatizer()
+    intents = json.loads(open(intents_path).read())
+    
+    words, labels, documents = [], [], []
+    ignore_chars = ['?', '!', '.', ',']
 
-# Load intents file
-intents = json.loads(open('intents.json').read())
+    for intent in intents['intents']:
+        for pattern in intent['patterns']:
+            tokens = nltk.word_tokenize(pattern)
+            words.extend(tokens)
+            documents.append((tokens, intent['tag']))
+            if intent['tag'] not in labels:
+                labels.append(intent['tag'])
 
-words = []
-labels = []
-documents = []
-ignore = ['?', '!', '.', ',']
+    words = sorted(set(lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_chars))
+    labels = sorted(set(labels))
 
-# Preprocess the intents data
-for intent in intents['intents']:
-    for pattern in intent['patterns']:
-        word_list = nltk.word_tokenize(pattern)
-        words.extend(word_list)
-        documents.append((word_list, intent['tag']))
-        if intent['tag'] not in labels:
-            labels.append(intent['tag'])
+    pickle.dump(words, open('words.pkl', 'wb'))
+    pickle.dump(labels, open('labels.pkl', 'wb'))
 
-# Lemmatize and remove duplicates from words
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore]
-words = sorted(list(set(words)))
+    training_data = []
+    output_empty = [0] * len(labels)
 
-labels = sorted(list(set(labels)))
+    for doc in documents:
+        bag = [0] * len(words)
+        token_words = [lemmatizer.lemmatize(word.lower()) for word in doc[0]]
+        for i, w in enumerate(words):
+            if w in token_words:
+                bag[i] = 1
+        output_row = output_empty[:]
+        output_row[labels.index(doc[1])] = 1
+        training_data.append([bag, output_row])
 
-# Save words and labels for later use
-pickle.dump(words, open('words.pkl', 'wb'))
-pickle.dump(labels, open('labels.pkl', 'wb'))
+    random.seed(42)
+    np.random.seed(42)
+    random.shuffle(training_data)
+    training_data = np.array(training_data, dtype=object)
 
-train_set = []
-output_empty = [0] * len(labels)
+    train_x = np.array(training_data[:, 0].tolist(), dtype=np.float32)
+    train_y = np.array(training_data[:, 1].tolist(), dtype=np.int32)
 
-# Create bag of words and output row
-for doc in documents:
-    bag = [0] * len(words)  # Initialize bag with zeros
-    word_patterns = doc[0]
-    word_patterns = [lemmatizer.lemmatize(word.lower()) for word in word_patterns]
-    for i, word in enumerate(words):
-        if word in word_patterns:
-            bag[i] = 1
-    output_row = list(output_empty)
-    output_row[labels.index(doc[1])] = 1
-    train_set.append([bag, output_row])
+    return train_x, train_y, len(words), len(labels)
 
-# Shuffle the training set
-random.seed(42)
-np.random.seed(42)
-random.shuffle(train_set)
-train_set = np.array(train_set, dtype=object)
+# ------------------------------
+# Build and Train Chatbot Model
+# ------------------------------
 
-train_x = np.array(train_set[:, 0].tolist(), dtype=np.float32)
-train_y = np.array(train_set[:, 1].tolist(), dtype=np.int32)
-
-# Define the model
-model = Sequential(
-    [
-        Dense(128, input_shape=(len(train_x[0]),), activation='relu'),
-        Dropout(0.3),  # Adjusted dropout rate
+def train_chatbot_model(train_x, train_y, input_dim, output_dim):
+    model = Sequential([
+        Dense(128, input_shape=(input_dim,), activation='relu'),
+        Dropout(0.3),
         Dense(64, activation='relu'),
-        Dropout(0.3),  # Adjusted dropout rate
-        Dense(len(train_y[0]), activation='softmax')
-    ]
-)
+        Dropout(0.3),
+        Dense(output_dim, activation='softmax')
+    ])
 
-# Compile the model with Adam optimizer
-optimizer = Adam(learning_rate=0.001)  # Lowered learning rate
-model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=Adam(learning_rate=0.001),
+                  metrics=['accuracy'])
 
-# Set up early stopping to prevent overfitting
-early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+    early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-# Train the model
-hist = model.fit(train_x, train_y, epochs=500, batch_size=5, verbose=1, validation_split=0.2, callbacks=[early_stop])
+    history = model.fit(
+        train_x, train_y,
+        epochs=500,
+        batch_size=5,
+        validation_split=0.2,
+        callbacks=[early_stop],
+        verbose=1
+    )
 
-# Save the trained model
-model.save('chatbot_model.h5')
-print("Model trained and saved successfully.")
+    model.save('chatbot_model.h5')
+    print("✅ Chatbot model trained and saved successfully.")
+    print(f"📈 Final training accuracy: {history.history['accuracy'][-1]:.4f}")
+    print(f"📊 Final validation accuracy: {history.history['val_accuracy'][-1]:.4f}")
 
-# Print the final training accuracy
-print(f"Final training accuracy: {hist.history['accuracy'][-1]:.4f}")
-print(f"Final validation accuracy: {hist.history['val_accuracy'][-1]:.4f}")
+# ------------------------------
+# Linear Regression Section
+# ------------------------------
+
+def run_linear_regression():
+    np.random.seed(42)
+    x = 2 * np.random.rand(100, 1)
+    y = 4 + 3 * x + np.random.randn(100, 1)
+
+    x_train, x_test, y_train, y_test = train_test_split(
+        x, y, test_size=0.2, random_state=42
+    )
+
+    model = LinearRegression()
+    model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+
+    print("\n📉 --- Linear Regression Results ---")
+    print(f"Slope: {model.coef_[0][0]:.4f}")
+    print(f"Intercept: {model.intercept_[0]:.4f}")
+    print(f"Mean Squared Error: {mse:.4f}")
+    print(f"R² Score: {r2:.4f}")
+
+    # Plot results
+    plt.figure(figsize=(8, 5))
+    plt.scatter(x_test, y_test, color='blue', label='Actual')
+    plt.plot(x_test, y_pred, color='red', label='Predicted')
+    plt.title('Linear Regression Fit')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+# ------------------------------
+# Main Execution
+# ------------------------------
+
+if __name__ == '__main__':
+    # Chatbot Training
+    x_train, y_train, input_size, output_size = prepare_chatbot_data()
+    train_chatbot_model(x_train, y_train, input_size, output_size)
+
+    # Linear Regression Analysis
+    run_linear_regression()
